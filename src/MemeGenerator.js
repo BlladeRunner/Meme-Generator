@@ -1,4 +1,4 @@
-import React, { Component } from "react"
+import React, {Component} from "react"
 
 class MemeGenerator extends Component {
     constructor() {
@@ -11,21 +11,24 @@ class MemeGenerator extends Component {
         }
         this.handleChange = this.handleChange.bind(this)
     }
-
+    
     componentDidMount() {
         fetch("https://api.imgflip.com/get_memes")
             .then(response => response.json())
             .then(response => {
                 const {memes} = response.data
-                this.setState({
-                    allMemeImgs: memes
-                })
+                this.setState({ allMemeImgs: memes })
             })
     }
-
+    
+    /**
+     * Create the onChagne handler method
+     * It should update the corresponding state on every change of the input box
+     */
+    
     handleChange(event) {
-        const { name, value } = event.target
-        this.setState({ [name] : value })
+        const {name, value} = event.target
+        this.setState({ [name]: value })
     }
     
     render() {
@@ -38,21 +41,22 @@ class MemeGenerator extends Component {
                         placeholder="Top Text"
                         value={this.state.topText}
                         onChange={this.handleChange}
-                    />
-                    <br />
+                    /> 
                     <input 
                         type="text"
                         name="bottomText"
                         placeholder="Bottom Text"
                         value={this.state.bottomText}
                         onChange={this.handleChange}
-                    />
-                    <br />                
+                    /> 
+                
                     <button>Gen</button>
                 </form>
-                <hr />
-                    <p>This is Top Text: {this.state.topText}</p>
-                    <p>This is Bottom Text: {this.state.bottomText}</p>
+                <div className="meme">
+                    <img src={this.state.randomImg} alt="" />
+                    <h2 className="top">{this.state.topText}</h2>
+                    <h2 className="bottom">{this.state.bottomText}</h2>
+                </div>
             </div>
         )
     }
