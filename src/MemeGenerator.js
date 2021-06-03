@@ -1,5 +1,10 @@
 import React, {Component} from "react"
 
+
+function MemeGenerator() {
+    
+}
+
 class MemeGenerator extends Component {
     constructor() {
         super()
