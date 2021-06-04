@@ -1,20 +1,23 @@
-import React, {Component} from "react"
+import React, {Component, useState} from "react"
 
 
 function MemeGenerator() {
-    
+    const topText = useState("")
+    const bottomText = useState("")
+    const randomImg = useState("http://i.imgflip.com/1bij.jpg")
+    const allMemeImgs = useState([])
 }
 
-class MemeGenerator extends Component {
-    constructor() {
-        super()
-        this.state = {
-            topText: "",
-            bottomText: "",
-            randomImg: "http://i.imgflip.com/1bij.jpg",
-            allMemeImgs: []
-        }
-    }
+// class MemeGenerator extends Component {
+//     constructor() {
+//         super()
+//         this.state = {
+//             topText: "",
+//             bottomText: "",
+//             randomImg: "http://i.imgflip.com/1bij.jpg",
+//             allMemeImgs: []
+//         }
+//     }
     
     componentDidMount() {
         fetch("https://api.imgflip.com/get_memes")
